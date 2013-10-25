@@ -15,7 +15,7 @@
 	$result=$mysqli->query($query);
 	while($row=$result->fetch_assoc())
 	{
-		echo "<a href='index.php?eventid=".$row['id']."'><li>".$row['name']."</li></a>";
+		echo "<li><a href='index.php?eventid=".$row['id']."'>".$row['name']."</a></li>";
 	}
 ?>
 </ul>
