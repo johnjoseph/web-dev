@@ -29,22 +29,35 @@
 	</ul>
 </div>
 <div id='main-content'>
+	<h2>Registration</h2>
+	<form method='POST'>
 	<?php
 		$event_id = $_REQUEST['eventid'];
-		$query="SELECT * FROM `events` WHERE id='$event_id'";
-		if ($result = $mysqli->query($query))
-		{
-			if ($row = $result->fetch_assoc()) {
-				echo "<h2>$row[name]</h2>";
-				echo "<p>$row[details]</p>";
-				echo "<a class='reg' href='reg.php?eventid=$row[id]'>Register</a>";
+		if ($_POST['submit']) {
+			$query = "INSERT INTO reg (event_id, name, phone) VALUES ('$event_id', '$_POST[name]', '$_POST[phone]')";
+			$mysqli->query($query);
+			echo "Successful";
+		} else if ($event_id) {
+			$query="SELECT * FROM `events` WHERE id='$event_id'";
+			if ($result = $mysqli->query($query))
+			{
+				if ($row = $result->fetch_assoc()) {
+					echo "Event: $row[name]<br/>";
+					echo "<input type='hidden' name='eventid' value='$event_id' />";
+					?>
+			<input type='text' name='name' placeholder='Name' />
+			<input type='text' name='phone' placeholder='Phone' />
+			<input type='submit' name='submit' value='Register' />
+					<?php
+				}
+				$result->free();
 			}
-			$result->free();
 		}
 
 		/* close connection */
 		$mysqli->close();
 	?>
+	</form>
 </div>
 </div>
 
