@@ -1,3 +1,3 @@
 <div id='header'>
-	Event Registration
+<h1>Workshop Example 1</h1>
 </div>
