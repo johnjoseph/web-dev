@@ -15,12 +15,12 @@ h1 {
 }
 #sidebar {
 	float: left;
-	width: 125px;
+	width: 170px;
 	background-color: #E9F9E9;
 }
 #main-content {
 	background-color: #E9E9F9;
-	margin-left: 135px;
+	margin-left: 180px;
 	padding: 10px;
 }
 h2 {
