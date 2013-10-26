@@ -8,7 +8,7 @@
 	require_once('connect.php');
 ?>
 <div id='header'>
-	<h1>Workshop Example 1</h1>
+	<h1>Registration</h1>
 </div>
 <div id='wrapper'>
 <div id='sidebar'>
@@ -29,14 +29,16 @@
 	</ul>
 </div>
 <div id='main-content'>
-	<h2>Registration</h2>
 	<form method='POST'>
 	<?php
 		$event_id = $_REQUEST['eventid'];
 		if ($_POST['submit']) {
 			$query = "INSERT INTO reg (event_id, name, phone) VALUES ('$event_id', '$_POST[name]', '$_POST[phone]')";
 			$mysqli->query($query);
-			echo "Successful";
+			$query = "SELECT * FROM events WHERE `id`='$event_id'";
+			$result=$mysqli->query($query);
+			$row=$result->fetch_assoc();
+			echo "successfully registered for ".$row['name'];
 		} else if ($event_id) {
 			$query="SELECT * FROM `events` WHERE id='$event_id'";
 			if ($result = $mysqli->query($query))

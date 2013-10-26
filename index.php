@@ -8,7 +8,7 @@
 	require_once('connect.php');
 ?>
 <div id='header'>
-	<h1>Workshop Example 1</h1>
+	<h1>Events</h1>
 </div>
 <div id='wrapper'>
 <div id='sidebar'>
